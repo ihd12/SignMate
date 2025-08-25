@@ -18,6 +18,11 @@ import Mailbox from "./component/Mailbox";
 import Inbox from "./component/inbox/Inbox";
 import NoticePage from "./pages/Notice";
 
+import logo from './logo.svg';
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Join from './User/pages/Join';
+import Login from './User/pages/Login';
 
 export default function App() {
   const token = localStorage.getItem("accessToken");
@@ -33,8 +38,8 @@ export default function App() {
     }
   }
   return (
-    
-    
+
+
     <Router>
       {/* <nav style={{ padding: 12, display: "flex", gap: 10, flexWrap: "wrap" }}> */}
         <Link to="/secret">비밀유지서약서</Link>
@@ -45,7 +50,7 @@ export default function App() {
         <Header />
       {/* </nav> */}
 
-         
+      <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/contracts" element={<ContractList />} />
@@ -69,7 +74,9 @@ export default function App() {
                 <Route path="/inbox" element={<Inbox />} />
                 <Route path="/notice" element={<NoticePage />} />
                 {/* 기본 라우트 */}
+              <Route path="/join" element={<Join />} />
             </Routes>
+      </BrowserRouter>
             <Footer />
         </Router>
     );
